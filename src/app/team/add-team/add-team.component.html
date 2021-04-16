@@ -1,0 +1,41 @@
+<hr />
+<div class="container">
+    <h4>Add new teams </h4>
+    <!-- Adding bootstrap alert box -->
+    <div *ngIf= "successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> New team added successfully.
+        <button (click)= "closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <!-- End of Bootstrap alert box -->
+    <form [formGroup] = "addNewTeamsForm" (ngSubmit)= "onSubmit()">
+        <div class="mb-3">
+            <input class="form-control col-sm-6" type="text" placeholder="Team Name"
+                formControlName="formControlTeamName">
+            <span *ngIf= "addNewTeamsForm.get('formControlTeamName').touched && 
+      addNewTeamsForm.get('formControlTeamName').hasError('required')">
+                Please enter team name</span>
+            <span *ngIf= "addNewTeamsForm.get('formControlTeamName').touched && 
+      addNewTeamsForm.get('formControlTeamName').hasError('minlength')">
+                Please enter minimum of 4 characters</span>
+            <span *ngIf= "addNewTeamsForm.get('formControlTeamName').touched && 
+      addNewTeamsForm.get('formControlTeamName').hasError('maxlength')">
+                Please enter maximum of 15 characters</span>
+        </div>
+        <div class="mb-3">
+            <input class="form-control col-sm-6" type="text" placeholder="Team Code"
+                formControlName="formControlTeamcode">
+            <span *ngIf= "addNewTeamsForm.get('formControlTeamcode').touched && 
+        addNewTeamsForm.get('formControlTeamcode').hasError('required')">
+                Please enter team code</span>
+            <span *ngIf= "addNewTeamsForm.get('formControlTeamcode').touched && 
+        addNewTeamsForm.get('formControlTeamcode').hasError('minlength')">
+                Please enter 3 characters </span>
+            <span *ngIf= "addNewTeamsForm.get('formControlTeamcode').touched && 
+        addNewTeamsForm.get('formControlTeamcode').hasError('maxlength')">
+                Please enter 3 characters</span>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!addNewTeamsForm.valid">Submit</button>
+    </form>
+</div>

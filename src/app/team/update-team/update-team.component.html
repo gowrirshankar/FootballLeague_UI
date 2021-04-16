@@ -1,0 +1,27 @@
+<hr />
+<div class="container">
+  <h4>Update the team name</h4>
+     <!-- Adding bootstrap alert box -->
+     <div *ngIf= "successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Success!</strong> Team name updated successfully.
+      <button (click)= "closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <!-- End of Bootstrap alert box -->
+<form [formGroup]="updateTeamsForm">
+  <div class="mb-3">
+        <input class="form-control col-sm-6" type="hidden" formControlName="TeamId">
+        </div>
+    <div class="mb-3">
+      <!-- <div *ngFor="let person of peopleArray.controls; let i = index;">
+        <div [formGroupName]="i"> -->
+          <input class="form-control col-sm-6" type="text"  placeholder="Team Name" formControlName="TeamName">
+          </div>
+          <div class="mb-3">
+          <input class="form-control col-sm-6" type="text" placeholder="Team Code" formControlName="TeamCode">
+    </div>
+    <hr />
+    <button class="btn btn-primary" type="submit" (click)="onSubmit()">Submit</button>
+  </form>
+  </div>

@@ -1,0 +1,43 @@
+<hr />
+<div class="container">
+    <h4>Update played matches </h4>
+    <!-- Adding bootstrap alert box -->
+    <div *ngIf= "successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> Updated played matches successfully.
+        <button (click)= "closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <!-- End of Bootstrap alert box -->
+    <form [formGroup] = "updatePlayedMatchesForm" (ngSubmit)= "onSubmit()">
+        <div class="mb-3">
+            <select formControlName="formControlTeamName" class="form-control col-sm-6">
+                <option value="" disabled>Select Teams</option>
+                <!-- <option>Select Teams</option> -->
+                <option *ngFor="let dataItem of listOfTeams" [value]="dataItem.teamId">{{dataItem.teamName}}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <input class="form-control col-sm-6" type="text" placeholder="Matches Played"
+                formControlName="formControlMatchesPlayed">
+        </div>
+        <div class="mb-3">
+            <input class="form-control col-sm-6" type="text" placeholder="Won"
+                formControlName="formControlWon">
+        </div>
+        <div class="mb-3">
+            <input class="form-control col-sm-6" type="text" placeholder="Lost"
+                formControlName="formControlLost">
+        </div>
+        <div class="mb-3">
+            <input class="form-control col-sm-6" type="text" placeholder="Draw"
+                formControlName="formControlDraw">
+        </div>
+        <div class="mb-3">
+            <input class="form-control col-sm-6" type="text" placeholder="Points"
+                formControlName="formControlPoints" disabled>
+        </div>
+        <!-- <button type="submit" class="btn btn-primary" [disabled]= "!addPlayedMatchesForm.valid">Submit</button> -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
